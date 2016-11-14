@@ -1,0 +1,16 @@
+{
+  "name": "soundtouch-js",
+  "version": "0.0.1",
+  "description": "node version of also's soundtouch-js",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florianthalmann/soundtouch-js.git"
+  },
+  "author": "Olli Parviainen, Ryan Berdeen",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/florianthalmann/soundtouch-js/issues"
+  },
+  "homepage": "https://github.com/florianthalmann/soundtouch-js#readme"
+}

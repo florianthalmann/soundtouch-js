@@ -148,3 +148,5 @@ extend(SoundTouch.prototype, {
         }
     }
 });
+
+module.exports = SoundTouch;

@@ -126,3 +126,5 @@ function SimpleFilter(sourceSound, pipe) {
 }
 
 extend(SimpleFilter.prototype, FilterSupport.prototype);
+
+module.exports = SimpleFilter;
