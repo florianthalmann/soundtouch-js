@@ -46,7 +46,7 @@ FifoSampleBuffer.prototype = {
     },
 
     clear: function() {
-        this.receive(frameCount);
+        this.receive();
         this.rewind();
     },
 

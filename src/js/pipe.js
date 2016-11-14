@@ -28,7 +28,7 @@ function AbstractFifoSamplePipe(createBuffers) {
         this.inputBuffer = this.outputBuffer = null;
     }
 }
-        
+
 AbstractFifoSamplePipe.prototype = {
     get inputBuffer() {
         return this._inputBuffer;

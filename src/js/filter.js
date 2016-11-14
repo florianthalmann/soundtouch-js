@@ -18,6 +18,9 @@
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+/**
+ * @constructor
+ */
 function FilterSupport(pipe) {
     this._pipe = pipe;
 }
@@ -40,13 +43,12 @@ FilterSupport.prototype = {
     // },
 
     fillOutputBuffer: function(numFrames) {
-        while (this.outputBuffer.frameCount < numFrames) {
+			while (this.outputBuffer.frameCount < numFrames) {
             // TODO hardcoded buffer size
-            var numInputFrames = (8192 * 2) - this.inputBuffer.frameCount;
+            var numInputFrames = (16) - this.inputBuffer.frameCount;
 
             this.fillInputBuffer(numInputFrames);
-
-            if (this.inputBuffer.frameCount < (8192 * 2)) {
+            if (this.inputBuffer.frameCount < (16)) {
                 break;
                 // TODO flush pipe
             }
@@ -56,21 +58,9 @@ FilterSupport.prototype = {
 
     clear: function() {
         this._pipe.clear();
-    }
-};
+				this.outputBufferPosition = 0;
+    },
 
-function SimpleFilter(sourceSound, pipe) {
-    FilterSupport.call(this, pipe);
-    this.sourceSound = sourceSound;
-    this.historyBufferSize = 22050;
-    this._sourcePosition = 0;
-    this.outputBufferPosition = 0;
-    this._position = 0;
-}
-
-extend(SimpleFilter.prototype, FilterSupport.prototype);
-
-extend(SimpleFilter.prototype, {
     get position() {
         return this._position;
     },
@@ -119,11 +109,20 @@ extend(SimpleFilter.prototype, {
 
     handleSampleData: function(e) {
         this.extract(e.data, 4096);
-    },
-
-    clear: function() {
-        // TODO yuck
-        FilterSupport.prototype.clear.call(this);
-        this.outputBufferPosition = 0;
     }
-});
+};
+
+/**
+ * @constructor
+ * @extends {FilterSupport}
+ */
+function SimpleFilter(sourceSound, pipe) {
+    FilterSupport.call(this, pipe);
+    this.sourceSound = sourceSound;
+    this.historyBufferSize = 22050;
+    this._sourcePosition = 0;
+    this.outputBufferPosition = 0;
+    this._position = 0;
+}
+
+extend(SimpleFilter.prototype, FilterSupport.prototype);

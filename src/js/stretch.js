@@ -17,9 +17,6 @@
 * License along with this library; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-
-//'use strict';
-
 /**
 * Giving this value for the sequence length sets automatic parameter value
 * according to tempo setting (recommended)
@@ -102,7 +99,7 @@ var AUTOSEEK_AT_MAX = 15.0;
 var AUTOSEEK_K = ((AUTOSEEK_AT_MAX - AUTOSEEK_AT_MIN) / (AUTOSEQ_TEMPO_TOP - AUTOSEQ_TEMPO_LOW));
 var AUTOSEEK_C = (AUTOSEEK_AT_MIN - (AUTOSEEK_K) * (AUTOSEQ_TEMPO_LOW));
 
-function Stretch(createBuffers) {
+function Stretch(createBuffers, sampleRate) {
     AbstractFifoSamplePipe.call(this, createBuffers);
     this.bQuickSeek = true;
     this.bMidBufferDirty = false;
@@ -114,7 +111,7 @@ function Stretch(createBuffers) {
     this.bAutoSeekSetting = true;
 
     this._tempo = 1;
-    this.setParameters(44100, DEFAULT_SEQUENCE_MS, DEFAULT_SEEKWINDOW_MS, DEFAULT_OVERLAP_MS);
+    this.setParameters(sampleRate, DEFAULT_SEQUENCE_MS, DEFAULT_SEEKWINDOW_MS, DEFAULT_OVERLAP_MS);
 }
 
 extend(Stretch.prototype, AbstractFifoSamplePipe.prototype);

@@ -1,4 +1,4 @@
-/*
+/**
 * SoundTouch JS audio processing library
 * Copyright (c) Olli Parviainen
 * Copyright (c) Ryan Berdeen
@@ -11,16 +11,22 @@
 * This library is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* Lesser General Public License for more details.
+* Lesser General License for more details.
 *
 * You should have received a copy of the GNU Lesser General Public
 * License along with this library; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*
+* @fileoverview
+* @suppress {globalThis, checkTypes}
 */
 
-function SoundTouch() {
+/**
+ * @constructor
+ */
+function SoundTouch(sampleRate) {
     this.rateTransposer = new RateTransposer(false);
-    this.tdStretch = new Stretch(false);
+    this.tdStretch = new Stretch(false, sampleRate);
 
     this._inputBuffer = new FifoSampleBuffer();
     this._intermediateBuffer = new FifoSampleBuffer();
@@ -38,14 +44,14 @@ function SoundTouch() {
 
 extend(SoundTouch.prototype, {
     clear: function () {
-        rateTransposer.clear();
-        tdStretch.clear();
+        this.rateTransposer.clear();
+        this.tdStretch.clear();
     },
 
     clone: function () {
         var result = new SoundTouch();
-        result.rate = rate;
-        result.tempo = tempo;
+        result.rate = this._rate;
+        result.tempo = this.tempo;
         return result;
     },
 
