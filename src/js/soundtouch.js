@@ -20,6 +20,7 @@
 * @fileoverview
 * @suppress {globalThis, checkTypes}
 */
+var extend = require('./core').extend;
 
 /**
  * @constructor

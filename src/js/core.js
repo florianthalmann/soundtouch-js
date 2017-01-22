@@ -36,3 +36,8 @@ function extend(a,b) {
 function testFloatEqual(a, b) {
     return (a > b ? a - b : b - a) > 1e-10;
 }
+
+var exports = module.exports = {
+  extend: extend,
+  testFloatEqual: testFloatEqual
+}
