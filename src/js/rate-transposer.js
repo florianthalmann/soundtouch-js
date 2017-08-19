@@ -18,6 +18,9 @@
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+var extend = require('./core').extend;
+var AbstractFifoSamplePipe = require('./pipe');
+
 function RateTransposer(createBuffers) {
     AbstractFifoSamplePipe.call(this, createBuffers);
     this._reset();
@@ -101,3 +104,5 @@ extend(RateTransposer.prototype, {
         return i;
     }
 });
+
+module.exports = RateTransposer;

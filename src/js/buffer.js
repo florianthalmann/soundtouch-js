@@ -123,3 +123,5 @@ FifoSampleBuffer.prototype = {
         }
     }
 };
+
+module.exports = FifoSampleBuffer;

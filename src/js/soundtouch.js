@@ -21,6 +21,10 @@
 * @suppress {globalThis, checkTypes}
 */
 var extend = require('./core').extend;
+var testFloatEqual = require('./core').testFloatEqual;
+var RateTransposer = require('./rate-transposer');
+var Stretch = require('./stretch');
+var FifoSampleBuffer = require('./buffer');
 
 /**
  * @constructor

@@ -17,6 +17,10 @@
 * License along with this library; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
+
+var extend = require('./core').extend;
+var AbstractFifoSamplePipe = require('./pipe');
+
 /**
 * Giving this value for the sequence length sets automatic parameter value
 * according to tempo setting (recommended)
@@ -512,3 +516,5 @@ extend(Stretch.prototype, {
       return this._tempo;
     }
 });
+
+module.exports = Stretch;
